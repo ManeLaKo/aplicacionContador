@@ -43,6 +43,9 @@ public class MainActivity_tienda extends AppCompatActivity {
             Intent intent1 = new Intent(this, MainActivity_juego.class);
             intent1.putExtra("nuevoValor", num);
             intent1.putExtra("nuevoClick", valorClicks);
+            intent.putExtra("nuevoCoste", coste);
+            startActivity(intent1); // Lanza la actividad con los datos actualizados
         }
     }
+
 }

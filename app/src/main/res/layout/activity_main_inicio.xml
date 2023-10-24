@@ -38,7 +38,6 @@
 
     <Button
         android:id="@+id/boton_info"
-        android:style=""
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#006c52"

@@ -18,7 +18,7 @@ public class MainActivity_juego extends AppCompatActivity {
     TextView contador;
     ImageButton billetes;
     double num = 0;
-    int valorClick = 100;
+    int valorClick = 1;
     double millones = 0;
     double miles = 0;
 
@@ -28,28 +28,32 @@ public class MainActivity_juego extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_juego);
 
-        contador = (TextView) findViewById(R.id.tw_contador);
-        billetes = (ImageButton) findViewById(R.id.ib_dolar);
+        contador = findViewById(R.id.tw_contador);
+        billetes = findViewById(R.id.ib_dolar);
 
+        billetes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sumar(v);
+            }
+        });
     }
 
     public void tienda(View v) {
         Intent intent = new Intent(this, MainActivity_tienda.class);
         intent.putExtra("valor", num);
         intent.putExtra("clicks", valorClick);
-        Intent i = new Intent(this, MainActivity_tienda.class);
-        startActivity(i);
+        startActivity(intent);
     }
 
     public void sumar(View view) {
         Intent intent1 = getIntent();
-        if (intent1.hasExtra("nuevoValor")){
+        if (intent1.hasExtra("nuevoValor")) {
             num = intent1.getDoubleExtra("nuevoValor", num);
         }
         if (intent1.hasExtra("nuevoClick")) {
             valorClick = intent1.getIntExtra("nuevoClick", 1);
         }
-
 
         num = num + valorClick;
         actualizarContador();

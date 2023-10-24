@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <scale
+        android:duration="115"
+        android:fromXScale="1.0"
+        android:fromYScale="1.0"
+        android:toXScale="1.1"
+        android:toYScale="1.1"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+
+    <!-- Rotación a la derecha (sentido de las manecillas del reloj) -->
+    <rotate
+        android:duration="110"
+        android:fromDegrees="0"
+        android:toDegrees="20"
+        android:pivotX="50%"
+        android:pivotY="50%" />
+
+    <!-- Rotación a la izquierda (sentido contrario a las manecillas del reloj) -->
+    <rotate
+        android:duration="110"
+        android:fromDegrees="20"
+        android:toDegrees="-20"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:startOffset="200" />
+
+    <!-- Rotación a la derecha para regresar a la posición original -->
+    <rotate
+        android:duration="110"
+        android:fromDegrees="-20"
+        android:toDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:startOffset="400" />
+
+
+    <!-- Volver a la posición original -->
+    <scale
+        android:duration="115"
+        android:fromXScale="1.2"
+        android:fromYScale="1.2"
+        android:toXScale="1.0"
+        android:toYScale="1.0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:startOffset="600" />
+</set>

@@ -19,47 +19,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.094" />
 
     <Button
-        android:id="@+id/boton_jugar"
+        android:id="@+id/boton_empezar"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
-        android:onClick="EmpezarPartida"
-        android:text="EMPEZAR PARTIDA"
+        android:background="@drawable/fondo_boton"
+        android:text="¿CÓMO SE JUEGA?"
         android:textColor="#80f8d2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.254" />
 
     <Button
         android:id="@+id/boton_info"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/fondo_boton"
+        android:backgroundTint="#00FFFFFF"
         android:text="¿CÓMO SE JUEGA?"
         android:textColor="#80f8d2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <Button
         android:id="@+id/boton_ajustes"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/fondo_boton"
         android:text="AJUSTES"
         android:textColor="#80f8d2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65" />
@@ -68,12 +65,11 @@
         android:id="@+id/boton_jugar7"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/fondo_boton"
         android:text="SALIR"
         android:textColor="#80f8d2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.85" />

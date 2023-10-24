@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#006c52"/> <!-- Color de fondo del botón -->
+    <corners android:radius="20dp"/> <!-- Radio de las esquinas, ajusta según lo redondeado que desees -->
+    <padding android:left="16dp" android:top="8dp" android:right="16dp" android:bottom="8dp"/> <!-- Padding para crear espacio alrededor del texto -->
+    <stroke android:color="#002118" android:width="2dp"/>
+</shape>

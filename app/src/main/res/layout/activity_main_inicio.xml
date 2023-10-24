@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#002118"
+    android:background="#22005d"
     tools:context=".MainActivity_inicio">
 
     <TextView
@@ -25,7 +25,7 @@
         android:id="@+id/boton_empezar"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/fondo_boton"
+        android:background="@drawable/rounded_border"
         android:text="¿CÓMO SE JUEGA?"
         android:textColor="#80f8d2"
         app:layout_constraintBottom_toBottomOf="parent"

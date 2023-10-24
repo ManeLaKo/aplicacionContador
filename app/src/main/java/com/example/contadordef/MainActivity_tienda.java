@@ -2,6 +2,7 @@ package com.example.contadordef;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,7 @@ public class MainActivity_tienda extends AppCompatActivity {
 
     double num = 0;
     int valorClicks = 1;
-    double coste = 100;
+    double coste = 0;
     Button boton_mejora;
 
 
@@ -23,28 +24,34 @@ public class MainActivity_tienda extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tienda);
         boton_mejora = (Button) findViewById(R.id.boton_mejora);
-    }
 
-    public void mejora(View view){
         Intent intent = getIntent();
-        if (intent.hasExtra("valor")){
+        if (intent.hasExtra("valor")) {
             num = intent.getDoubleExtra("valor", 0);
         }
-        if (intent.hasExtra("clicks")){
-            valorClicks = intent.getIntExtra("nuevoClick", 0);
+        if (intent.hasExtra("clicks")) {
+            valorClicks = intent.getIntExtra("clicks", 1);
+        }
+        if (intent.hasExtra("costoMejora")) {
+            coste = intent.getDoubleExtra("costoMejora", 100);
+            boton_mejora.setText(coste + " $");
         }
 
-        if (num >= coste){
+    }
+
+    public void mejora(View view) {
+        if (num >= coste) {
             num = num - coste;
             valorClicks++;
             coste = coste + 20;
             boton_mejora.setText(coste + " $");
 
-            Intent intent1 = new Intent(this, MainActivity_juego.class);
-            intent1.putExtra("nuevoValor", num);
-            intent1.putExtra("nuevoClick", valorClicks);
-            intent.putExtra("nuevoCoste", coste);
-            startActivity(intent1); // Lanza la actividad con los datos actualizados
+            Intent intent = new Intent();
+            intent.putExtra("nuevoValor", num);
+            intent.putExtra("nuevoClick", valorClicks);
+            intent.putExtra("costoMejora", coste);
+            setResult(RESULT_OK, intent);
+            finish();
         }
     }
 

@@ -1,7 +1,10 @@
 package com.example.contadordef;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +24,29 @@ public class MainActivity_juego extends AppCompatActivity {
     int valorClick = 1;
     double millones = 0;
     double miles = 0;
+    double costoMejora = 100;
 
+
+    private final ActivityResultLauncher<Intent> tiendaLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        if (data.hasExtra("nuevoValor")) {
+                            num = data.getDoubleExtra("nuevoValor", num);
+                        }
+                        if (data.hasExtra("nuevoClick")) {
+                            valorClick = data.getIntExtra("nuevoClick", 1);
+                        }
+                        if (data.hasExtra("costoMejora")) {
+                            costoMejora = data.getDoubleExtra("costoMejora", costoMejora);
+                        }
+                        actualizarContador();
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +64,14 @@ public class MainActivity_juego extends AppCompatActivity {
         });
     }
 
+    private static final int REQUEST_CODE_TIENDA = 1;
+
     public void tienda(View v) {
         Intent intent = new Intent(this, MainActivity_tienda.class);
         intent.putExtra("valor", num);
         intent.putExtra("clicks", valorClick);
-        startActivity(intent);
+        intent.putExtra("costoMejora", costoMejora);
+        tiendaLauncher.launch(intent);
     }
 
     public void sumar(View view) {
@@ -78,5 +106,20 @@ public class MainActivity_juego extends AppCompatActivity {
             contador.setText(texto);
         });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_TIENDA && resultCode == RESULT_OK) {
+            if (data.hasExtra("nuevoValor")) {
+                num = data.getDoubleExtra("nuevoValor", num);
+            }
+            if (data.hasExtra("nuevoClick")) {
+                valorClick = data.getIntExtra("nuevoClick", 1);
+            }
+            actualizarContador();
+        }
+    }
+
 
 }

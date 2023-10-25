@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,16 +17,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import kotlin.js.ExperimentalJsExport;
 
 public class MainActivity_juego extends AppCompatActivity {
 
     TextView contador;
     ImageButton billetes;
-    double num = 0;
+    double num = 190;
     int valorClick = 1;
     double millones = 0;
     double miles = 0;
     double costoMejora = 100;
+    boolean automatico = false;
+    boolean hiloActivo = true;
 
 
     private final ActivityResultLauncher<Intent> tiendaLauncher = registerForActivityResult(
@@ -41,6 +49,15 @@ public class MainActivity_juego extends AppCompatActivity {
                         }
                         if (data.hasExtra("costoMejora")) {
                             costoMejora = data.getDoubleExtra("costoMejora", costoMejora);
+                        }
+                        if (data.hasExtra("automatico")) {
+                            automatico = data.getBooleanExtra("automatico", automatico);
+                        }
+                        if (data.hasExtra("automatico")) {
+                            automatico = data.getBooleanExtra("automatico", false);
+                            if (automatico == true){
+                                ejecutarHilo();
+                            }
                         }
                         actualizarContador();
                     }
@@ -71,6 +88,7 @@ public class MainActivity_juego extends AppCompatActivity {
         intent.putExtra("valor", num);
         intent.putExtra("clicks", valorClick);
         intent.putExtra("costoMejora", costoMejora);
+        intent.putExtra("automatico", automatico);
         tiendaLauncher.launch(intent);
     }
 
@@ -89,6 +107,26 @@ public class MainActivity_juego extends AppCompatActivity {
         billetes.startAnimation(anim);
 
 
+    }
+
+    public void ejecutarHilo() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Handler handler = new Handler(Looper.getMainLooper());
+
+        executor.execute(() ->{
+            while (hiloActivo) {
+                num = num + valorClick;
+                handler.post(() -> {
+                    actualizarContador();
+                });
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
     }
 
     public void actualizarContador() {
@@ -117,8 +155,16 @@ public class MainActivity_juego extends AppCompatActivity {
             if (data.hasExtra("nuevoClick")) {
                 valorClick = data.getIntExtra("nuevoClick", 1);
             }
+            if (data.hasExtra("automatico")) {
+                automatico = data.getBooleanExtra("automatico", false);
+            }
             actualizarContador();
         }
+    }
+
+    public void Volver(View v){
+        Intent i = new Intent(this, MainActivity_inicio.class);
+        startActivity(i);
     }
 
 

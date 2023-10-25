@@ -7,6 +7,22 @@
     android:background="#22005d"
     tools:context=".MainActivity_tienda">
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="667dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="Volver"
+        android:text="SALIR"
+        android:textColor="#80f8d2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ib_carrito"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_titulotienda"
         android:layout_width="wrap_content"
@@ -62,6 +78,7 @@
                 android:id="@+id/tv_mejora"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_border"
                 android:text="Mejora tus CLICKS"
@@ -80,11 +97,12 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/boton_mejora1"
                 android:layout_width="142dp"
                 android:layout_height="52dp"
                 android:layout_weight="1"
                 android:background="#22005d"
+                android:onClick="mejora1"
                 android:scaleType="fitCenter"
                 android:src="@android:drawable/checkbox_off_background" />
 
@@ -95,11 +113,12 @@
 
             <TextView
                 android:id="@+id/tv_automatico"
-                android:layout_width="235dp"
+                android:layout_width="248dp"
                 android:layout_height="52dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_border"
-                android:text="Automatico"
+                android:text="Automatico (200 $)"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"

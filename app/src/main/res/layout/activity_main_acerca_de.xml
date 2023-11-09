@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#22005d"
-    tools:context=".MainActivity_ajustes">
+    tools:context=".MainActivity_AcercaDe">
 
     <TextView
-        android:id="@+id/titulo_ajustes"
+        android:id="@+id/titulo_acercaDe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed-medium"
-        android:text="AJUSTES"
+        android:text="ACERCA DE"
         android:textColor="#80f8d2"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,13 +21,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.094" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv1"
-        android:layout_width="0dp"
-        android:layout_height="535dp"
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="wrap_content"
+        android:layout_height="675dp"
+        android:background="@drawable/rounded_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_ajustes" />
+        app:layout_constraintTop_toBottomOf="@+id/titulo_acercaDe"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textoAcercaDe1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="34dp"
+        android:text="CENTROS DE ENSEÑANZA:"
+        android:textColor="#80f8d2"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_acercaDe"
+        app:layout_constraintVertical_bias="0.285" />
 </androidx.constraintlayout.widget.ConstraintLayout>
